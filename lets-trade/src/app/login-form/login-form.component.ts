@@ -8,14 +8,16 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./login-form.component.css'],
 })
 export class LoginFormComponent implements OnInit {
-  sendForm = this.formBuilder.group({ name: '', password: '', email: '' });
+  sendForm = this.formBuilder.group({ name: '', password: '' });
 
   constructor(
     private formBuilder: FormBuilder,
     private tradeApi: TradeApiService
   ) {}
 
-  onSubmit() {}
+  onSubmit() {
+    this.tradeApi.login(this.sendForm.value.name, this.sendForm.value.password);
+  }
 
   ngOnInit(): void {}
 }

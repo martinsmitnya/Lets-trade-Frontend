@@ -24,18 +24,17 @@ export class TradeApiService {
       });
   }
 
-  login(name: string, password: string, email: string) {
+  login(name: string, password: string) {
     const headers = { 'content-Type': 'application/json' };
     const body = {
       username: name,
       password: password,
-      email: email,
     };
     return this.http
       .post<any>(`${this.url}/login`, body, { headers })
       .subscribe({
         next: (data) => console.log(data),
-        error: (error) => console.error('Error: ' + JSON.parse(error.message)),
+        error: (error) => console.error('Error: ' + JSON.parse(error)),
       });
   }
 }
