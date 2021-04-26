@@ -11,6 +11,7 @@ import { CorsComponent } from './cors/cors.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
       { path: 'cors', component: CorsComponent },
       { path: '', component: WelcomeScreenComponent },
     ]),
+    NgbModule,
   ],
   providers: [LoginFormComponent, CorsComponent, RegisterFormComponent],
   bootstrap: [AppComponent],

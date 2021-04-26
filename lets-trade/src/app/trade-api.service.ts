@@ -7,9 +7,13 @@ import { HttpClient } from '@angular/common/http';
 export class TradeApiService {
   constructor(private http: HttpClient) {}
 
-  register(name: string, password: string) {
+  register(name: string, password: string, email: string) {
     const headers = { 'content-Type': 'application/json' };
-    const body = JSON.stringify({ username: name, password: password });
+    const body = JSON.stringify({
+      username: name,
+      password: password,
+      email: email,
+    });
     const settings = { body, headers };
     return this.http.post<any>('/register', settings).subscribe({
       next: (data) => console.log('Yey', data),
@@ -17,9 +21,13 @@ export class TradeApiService {
     });
   }
 
-  login(name: string, password: string) {
+  login(name: string, password: string, email: string) {
     const headers = { 'content-Type': 'application/json' };
-    const body = JSON.stringify({ username: name, password: password });
+    const body = JSON.stringify({
+      username: name,
+      password: password,
+      email: email,
+    });
     const settings = { body, headers };
     return this.http.post<any>('/login', settings).subscribe({
       next: (data) => console.log(data),
