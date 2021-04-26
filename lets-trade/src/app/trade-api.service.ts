@@ -10,17 +10,18 @@ export class TradeApiService {
   register(name: string, password: string) {
     const headers = { 'content-Type': 'application/json' };
     const body = JSON.stringify({ username: name, password: password });
-    return this.http
-      .post<any>('/register', body, { headers: headers })
-      .subscribe({
-        next: (data) => console.log('Yey', data),
-        error: (error) => console.error('Error: ' + JSON.stringify(error)),
-      });
+    const settings = { body, headers };
+    return this.http.post<any>('/register', settings).subscribe({
+      next: (data) => console.log('Yey', data),
+      error: (error) => console.error('Error: ' + JSON.stringify(error)),
+    });
   }
 
   login(name: string, password: string) {
-    const body = { username: name, password: password };
-    return this.http.get<any>('/login').subscribe({
+    const headers = { 'content-Type': 'application/json' };
+    const body = JSON.stringify({ username: name, password: password });
+    const settings = { body, headers };
+    return this.http.post<any>('/login', settings).subscribe({
       next: (data) => {
         console.log(data);
       },
