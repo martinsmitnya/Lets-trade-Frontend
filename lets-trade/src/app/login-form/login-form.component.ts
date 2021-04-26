@@ -9,7 +9,7 @@ import { FormBuilder } from '@angular/forms';
 })
 export class LoginFormComponent implements OnInit {
   sendForm = this.formBuilder.group({ name: '', password: '' });
-  callComponent: EventEmitter<any> = new EventEmitter();
+
   constructor(
     private formBuilder: FormBuilder,
     private tradeApi: TradeApiService

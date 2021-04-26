@@ -15,14 +15,9 @@ export class WelcomeScreenComponent implements OnInit {
     private register: RegisterFormComponent
   ) {}
 
-  setToLogin() {
-    this.isLogin = true;
-    this.isRegister = false;
-  }
-
-  setToRegister() {
-    this.isRegister = true;
-    this.isLogin = false;
+  change() {
+    this.isLogin = !this.isLogin;
+    this.isRegister = !this.isRegister;
   }
 
   ngOnInit(): void {}
