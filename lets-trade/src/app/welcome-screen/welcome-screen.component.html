@@ -1,0 +1,17 @@
+<div>
+  <mat-radio-group aria-label="Select an option">
+    <mat-radio-button value="login" (change)="change()" checked>
+      Login</mat-radio-button
+    >
+    <mat-radio-button value="register" (change)="change()">
+      Register</mat-radio-button
+    >
+  </mat-radio-group>
+  <br />
+  <div *ngIf="isLogin">
+    <label>Login<br /><app-login-form></app-login-form></label>
+  </div>
+  <div *ngIf="isRegister">
+    <label>Register<br /><app-register-form></app-register-form></label>
+  </div>
+</div>
