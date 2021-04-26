@@ -8,7 +8,8 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./login-form.component.css'],
 })
 export class LoginFormComponent implements OnInit {
-  sendForm = this.formBuilder.group({ name: '', password: '' });
+  sendForm = this.formBuilder.group({ name: '', password: '', email: '' });
+  errorMessage: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -16,7 +17,18 @@ export class LoginFormComponent implements OnInit {
   ) {}
 
   onSubmit() {
-    this.tradeApi.login(this.sendForm.value.name, this.sendForm.value.password);
+    if (this.sendForm.value.name.trim() === '') {
+      this.errorMessage = 'There is no username';
+    } else if (this.sendForm.value.password.trim() === '') {
+      this.errorMessage = 'There is no password';
+    } else {
+      this.tradeApi.login(
+        this.sendForm.value.name.trim(),
+        this.sendForm.value.password.trim(),
+        this.sendForm.value.email.trim()
+      );
+      this.errorMessage = '';
+    }
   }
 
   ngOnInit(): void {}
