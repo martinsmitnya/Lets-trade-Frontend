@@ -8,7 +8,7 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./login-form.component.css'],
 })
 export class LoginFormComponent implements OnInit {
-  sendForm = this.formBuilder.group({ name: '', password: '' });
+  sendForm = this.formBuilder.group({ name: '', password: '', email: '' });
 
   constructor(
     private formBuilder: FormBuilder,

@@ -8,14 +8,19 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./register-form.component.css'],
 })
 export class RegisterFormComponent implements OnInit {
-  sendForm = this.formBuilder.group({ name: '', password: '' });
-  callComponent: EventEmitter<any> = new EventEmitter();
+  sendForm = this.formBuilder.group({ name: '', password: '', email: '' });
   constructor(
     private formBuilder: FormBuilder,
     private tradeApi: TradeApiService
   ) {}
 
-  onSubmit() {}
+  onSubmit() {
+    this.tradeApi.register(
+      this.sendForm.value.name,
+      this.sendForm.value.password,
+      this.sendForm.value.email
+    );
+  }
 
   ngOnInit(): void {}
 }
