@@ -22,9 +22,7 @@ export class TradeApiService {
     const body = JSON.stringify({ username: name, password: password });
     const settings = { body, headers };
     return this.http.post<any>('/login', settings).subscribe({
-      next: (data) => {
-        console.log(data);
-      },
+      next: (data) => console.log(data),
       error: (error) => console.error('Error: ' + JSON.stringify(error)),
     });
   }
