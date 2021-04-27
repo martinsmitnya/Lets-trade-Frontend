@@ -38,4 +38,16 @@ export class TradeApiService {
         error: (error) => console.error('Error: ' + error.error.message),
       });
   }
+
+  buyStock(symbol: string, amount: number) {
+    let body = JSON.stringify({ symbol: symbol, amount: amount });
+    let headers = { 'Content-Type': 'application/json' };
+    return this.http.post<any>(`${this.url}/buy`, body, { headers });
+  }
+
+  sellStock(symbol: string, amount: number) {
+    let body = JSON.stringify({ symbol: symbol, amount: amount });
+    let headers = { 'Content-Type': 'application/json' };
+    return this.http.post<any>(`${this.url}/sell`, body, { headers });
+  }
 }
