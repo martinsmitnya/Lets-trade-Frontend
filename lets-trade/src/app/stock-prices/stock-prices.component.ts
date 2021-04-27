@@ -11,19 +11,12 @@ import { StockApiService } from '../stock-api.service';
 export class StockPricesComponent implements OnInit {
   prices: number[] = [];
   stockList: string[] = [];
-  obs = this.stockApi.getAllStock();
   companyList: string[] = [];
 
   constructor(private stockApi: StockApiService) {}
 
   listPrices() {
     console.log(this.prices);
-  }
-
-  getPrice() {
-    this.stockApi.getStock('goog').subscribe({
-      next: (data) => console.log(data),
-    });
   }
 
   ngOnInit(): void {
