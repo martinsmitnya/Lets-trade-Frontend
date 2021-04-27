@@ -1,17 +1,20 @@
 <form [formGroup]="sendForm" (ngSubmit)="onSubmit()">
-  <div class="">
-    <label for="name">
-      Username: <input type="text" id="name" formControlName="name"
-    /></label>
-    <label for="password"
-      >Password:
-      <input type="password" id="password" formControlName="password"
-    /></label>
-    <label for="email"
-      >Email: <input type="email" id="email" formControlName="email"
-    /></label>
-    <button type="submit">Submit</button>
+  <div class="form-group">
+    <label for="name" class="register-form-label">
+      Username: <input type="text" id="name" placeholder="Your username" class="form-control"
+        formControlName="name" /></label>
     <br />
-    <label *ngIf="errorMessage != ''">{{ errorMessage }}</label>
+    <label for="email" class="register-form-label">Email: <input type="email" placeholder="something@something.com" class="form-control" id="email"
+        formControlName="email" /></label>
+    <br />
+    <label for="password" class="register-form-label">Password:
+      <input type="password" id="password" placeholder="Your password" class="form-control" formControlName="password"
+        aria-describedby="passwordHelpBlock" /></label>
+    <br />
+    <small id="passwordHelpBlock" class="form-text text-muted">
+      ERROR MESSAGE
+    </small>
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
   </div>
 </form>
