@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { element } from 'protractor';
+import { isObjectLiteralExpression } from 'typescript';
 import { StockApiService } from '../stock-api.service';
 
 @Component({
@@ -8,7 +10,8 @@ import { StockApiService } from '../stock-api.service';
 })
 export class StockPricesComponent implements OnInit {
   prices: number[] = [];
-  companyList: string[] = ['Google', 'Facebook', 'Microsoft', 'Twitter'];
+  obs = this.stockApi.getAllStock();
+  companyList: string[] = [];
 
   constructor(private stockApi: StockApiService) {}
 
@@ -26,7 +29,10 @@ export class StockPricesComponent implements OnInit {
     let stocks: number[] = [];
     this.stockApi.getAllStock().forEach((element: any) => {
       element.subscribe({
-        next: (data: number) => this.prices.push(data),
+        next: (data: any) => {
+          this.prices.push(data.latestPrice);
+          this.companyList.push(data.companyName);
+        },
       });
     });
     /*for (let i = 0; i < 4; i++) {
