@@ -10,7 +10,7 @@ import { StockApiService } from '../stock-api.service';
 })
 export class StockPricesComponent implements OnInit {
   prices: number[] = [];
-  stocksList: any[][] = [];
+  stockList: string[] = [];
   obs = this.stockApi.getAllStock();
   companyList: string[] = [];
 
@@ -33,12 +33,9 @@ export class StockPricesComponent implements OnInit {
         next: (data: any) => {
           this.prices.push(data.latestPrice);
           this.companyList.push(data.companyName);
-          this.stocksList.push([[data.latestPrice], [data.companyName]]);
+          this.stockList.push(data.companyName + ': ' + data.latestPrice);
         },
       });
     });
-    /*for (let i = 0; i < 4; i++) {
-      this.prices.push({ [this.companyList[i]]: stocks[i] });
-    }*/
   }
 }
