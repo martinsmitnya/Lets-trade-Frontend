@@ -17,18 +17,21 @@ export class RegisterFormComponent implements OnInit {
 
   onSubmit() {
     if (this.sendForm.value.name.trim() === '') {
-      this.errorMessage = 'There is no username';
-    } else if (this.sendForm.value.password.trim().length < 8) {
-      this.errorMessage = 'The password must be at least 8 character';
+      this.errorMessage = 'Username is required';
     } else if (this.sendForm.value.email.trim() === '') {
-      this.errorMessage = 'There is no email';
+      this.errorMessage = 'Email address is required';
+    } else if (this.sendForm.value.password.trim().length < 8) {
+      this.errorMessage = 'The password must be at least 8 characters long';
     } else {
       this.tradeApi.register(
         this.sendForm.value.name.trim(),
         this.sendForm.value.password.trim(),
         this.sendForm.value.email.trim()
-      );
-      this.errorMessage = '';
+      )
+      .subscribe({
+        next: (data) => this.errorMessage = 'Loading...',
+        error: (error) => this.errorMessage = error.message,
+      });
     }
   }
 

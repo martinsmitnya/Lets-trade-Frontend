@@ -26,8 +26,11 @@ export class LoginFormComponent implements OnInit {
         this.sendForm.value.name.trim(),
         this.sendForm.value.password.trim(),
         this.sendForm.value.email.trim()
-      );
-      this.errorMessage = '';
+      )
+      .subscribe({
+        next: (data) => this.errorMessage = 'Loading...',
+        error: (error) => this.errorMessage = error.message,
+      });
     }
   }
 

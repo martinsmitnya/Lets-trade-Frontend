@@ -16,12 +16,7 @@ export class TradeApiService {
       password: password,
       email: email,
     };
-    return this.http
-      .post<any>(`${this.url}/register`, body, { headers })
-      .subscribe({
-        next: (data) => console.log('Yey', data),
-        error: (error) => console.error('Error: ' + error.error.message),
-      });
+    return this.http.post<any>(`${this.url}/register`, body, { headers })
   }
 
   login(name: string, password: string, email: string) {
@@ -31,11 +26,6 @@ export class TradeApiService {
       password: password,
       email: email,
     };
-    return this.http
-      .post<any>(`${this.url}/login`, body, { headers })
-      .subscribe({
-        next: (data) => console.log(data),
-        error: (error) => console.error('Error: ' + error.error.message),
-      });
+    return this.http.post<any>(`${this.url}/login`, body, { headers })
   }
 }
