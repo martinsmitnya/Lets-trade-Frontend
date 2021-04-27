@@ -7,6 +7,7 @@ import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 })
 export class StockTradeComponent implements OnInit {
   @Input() symbol: string = '';
+  @Input() amount: number = 3;
 
   constructor() {}
 
