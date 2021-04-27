@@ -8,6 +8,7 @@ import { StockApiService } from '../stock-api.service';
 })
 export class StockPricesComponent implements OnInit {
   prices: number[] = [];
+  companyList: string[] = ['Google', 'Facebook', 'Microsoft', 'Twitter'];
 
   constructor(private stockApi: StockApiService) {}
 
@@ -16,16 +17,20 @@ export class StockPricesComponent implements OnInit {
   }
 
   getPrice() {
-    this.stockApi.getStock('goog').then((stock) => {
-      console.log(stock);
+    this.stockApi.getStock('goog').subscribe({
+      next: (data) => console.log(data),
     });
   }
 
   ngOnInit(): void {
+    let stocks: number[] = [];
     this.stockApi.getAllStock().forEach((element: any) => {
       element.subscribe({
         next: (data: number) => this.prices.push(data),
       });
     });
+    /*for (let i = 0; i < 4; i++) {
+      this.prices.push({ [this.companyList[i]]: stocks[i] });
+    }*/
   }
 }

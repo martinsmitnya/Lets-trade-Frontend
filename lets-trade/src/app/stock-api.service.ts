@@ -20,14 +20,7 @@ export class StockApiService {
     return stocks;
   }
 
-  async getStock(company: string) {
-    await this.http
-      .get<number>(this.url + company + this.stockToken)
-      .subscribe({
-        next: (data) => {
-          console.log(data);
-          return { company: data };
-        },
-      });
+  getStock(company: string) {
+    return this.http.get<number>(this.url + company + this.stockToken);
   }
 }

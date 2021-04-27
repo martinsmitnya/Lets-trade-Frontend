@@ -1,6 +1,3 @@
-<p>stock-prices works!</p>
-<button (click)="getPrice()">Price</button>
-<button (click)="listPrices()">ALL</button>
-<div *ngFor="let price of prices">
-  {{ price }}
+<div *ngFor="let price of prices; let i = index">
+  {{ companyList[i] }}: {{ price | currency }}
 </div>
