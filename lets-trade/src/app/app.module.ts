@@ -13,16 +13,18 @@ import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.componen
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StockPricesComponent } from './stock-prices/stock-prices.component';
+import { StockTradeComponent } from './stock-trade/stock-trade.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     CorsComponent,
     LoginFormComponent,
     WelcomeScreenComponent,
     RegisterFormComponent,
     StockPricesComponent,
-  ],
+      StockTradeComponent
+   ],
   imports: [
     FormsModule,
     MatRadioModule,
