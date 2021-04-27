@@ -16,15 +16,15 @@ import { StockPricesComponent } from './stock-prices/stock-prices.component';
 import { StockTradeComponent } from './stock-trade/stock-trade.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     CorsComponent,
     LoginFormComponent,
     WelcomeScreenComponent,
     RegisterFormComponent,
     StockPricesComponent,
-      StockTradeComponent
-   ],
+    StockTradeComponent,
+  ],
   imports: [
     FormsModule,
     MatRadioModule,
@@ -39,7 +39,13 @@ import { StockTradeComponent } from './stock-trade/stock-trade.component';
     ]),
     NgbModule,
   ],
-  providers: [LoginFormComponent, CorsComponent, RegisterFormComponent],
+  providers: [
+    LoginFormComponent,
+    CorsComponent,
+    RegisterFormComponent,
+    StockPricesComponent,
+    StockTradeComponent,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
