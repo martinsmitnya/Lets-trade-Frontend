@@ -12,15 +12,19 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StockPricesComponent } from './stock-prices/stock-prices.component';
+import { StockTradeComponent } from './stock-trade/stock-trade.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     CorsComponent,
     LoginFormComponent,
     WelcomeScreenComponent,
     RegisterFormComponent,
-  ],
+    StockPricesComponent,
+      StockTradeComponent
+   ],
   imports: [
     FormsModule,
     MatRadioModule,
@@ -31,6 +35,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RouterModule.forRoot([
       { path: 'cors', component: CorsComponent },
       { path: '', component: WelcomeScreenComponent },
+      { path: 'stock', component: StockPricesComponent },
     ]),
     NgbModule,
   ],
