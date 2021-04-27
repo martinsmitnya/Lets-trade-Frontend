@@ -14,6 +14,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StockPricesComponent } from './stock-prices/stock-prices.component';
 import { StockTradeComponent } from './stock-trade/stock-trade.component';
+import { CurrentStocksComponent } from './current-stocks/current-stocks.component';
 
 @NgModule({
   declarations: [	
@@ -23,7 +24,8 @@ import { StockTradeComponent } from './stock-trade/stock-trade.component';
     WelcomeScreenComponent,
     RegisterFormComponent,
     StockPricesComponent,
-      StockTradeComponent
+      StockTradeComponent,
+      CurrentStocksComponent
    ],
   imports: [
     FormsModule,
@@ -36,6 +38,7 @@ import { StockTradeComponent } from './stock-trade/stock-trade.component';
       { path: 'cors', component: CorsComponent },
       { path: '', component: WelcomeScreenComponent },
       { path: 'stock', component: StockPricesComponent },
+      { path: 'allStocks', component: CurrentStocksComponent }
     ]),
     NgbModule,
   ],

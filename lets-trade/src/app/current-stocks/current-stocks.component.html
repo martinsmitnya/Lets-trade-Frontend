@@ -1,0 +1,4 @@
+<div *ngFor="let stock of allStocks">
+  <p>{{ stock.symbol }}, {{ stock.latestPrice }}, {{ stock.change }}, {{ stock.changePercent }}</p>
+  <small>{{ stock.companyName }}</small>
+</div>
