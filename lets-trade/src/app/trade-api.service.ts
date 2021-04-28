@@ -39,15 +39,14 @@ export class TradeApiService {
       });
   }
 
-  buyStock(symbol: string, amount: number) {
-    let body = JSON.stringify({ symbol: symbol, amount: amount });
+  tradeStock(endpoint: string, symbol: string, amount: number, date?: any) {
+    let body = JSON.stringify({
+      symbol: symbol,
+      amount: amount,
+      date: Date.parse(date) || undefined,
+    });
+    console.log(body);
     let headers = { 'Content-Type': 'application/json' };
-    return this.http.post<any>(`${this.url}/buy`, body, { headers });
-  }
-
-  sellStock(symbol: string, amount: number) {
-    let body = JSON.stringify({ symbol: symbol, amount: amount });
-    let headers = { 'Content-Type': 'application/json' };
-    return this.http.post<any>(`${this.url}/sell`, body, { headers });
+    return this.http.post<any>(`${this.url}/${endpoint}`, body, { headers });
   }
 }
