@@ -8,21 +8,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatInputModule } from '@angular/material/input';
-
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { AppRoutingModule } from './app-routing.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialogModule } from '@angular/material/dialog';
+
 import { AppComponent } from './app.component';
 import { CorsComponent } from './cors/cors.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
-import { MaterialModule } from './date-picker/material-module';
-
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StockPricesComponent } from './stock-prices/stock-prices.component';
 import { StockTradeComponent } from './stock-trade/stock-trade.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -53,8 +51,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
-    MatInputModule,
-    MaterialModule,
+    MatDialogModule,
   ],
   providers: [
     LoginFormComponent,

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { TradeApiService } from '../trade-api.service';
 import { FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { DatePickerComponent } from '../date-picker/date-picker.component';
 
 @Component({
   selector: 'app-stock-trade',
@@ -22,11 +24,12 @@ export class StockTradeComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private tradeApi: TradeApiService
+    private tradeApi: TradeApiService,
+    public dialog: MatDialog
   ) {}
 
   buyStock() {
-    console.log(this.sendForm.value);
+    console.log(new Date(this.sendForm.value.date).getTime());
     this.tradeApi.buyStock(this.symbol, this.sendForm.value.amountToBuy);
   }
 
@@ -36,6 +39,14 @@ export class StockTradeComponent implements OnInit {
   }
 
   onSubmit() {}
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DatePickerComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   /*onKey(event: any) {
     if (event.target.id === 'buyAmount') {

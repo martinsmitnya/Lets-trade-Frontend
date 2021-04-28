@@ -7,7 +7,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./date-picker.component.css'],
 })
 export class DatePickerComponent {
-  date = new FormControl(new Date());
+  minDate: Date = new Date(Date.now());
   @Output() public onSelect = new EventEmitter<Date>();
 
   public onDateChange(date: Date): void {
