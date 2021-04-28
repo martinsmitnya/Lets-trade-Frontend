@@ -47,7 +47,7 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
       { path: 'cors', component: CorsComponent },
       { path: '', component: WelcomeScreenComponent },
       { path: 'stock', component: StockPricesComponent },
-      { path: 'allStocks', component: CurrentStocksComponent }
+      { path: 'allStocks', component: CurrentStocksComponent },
       { path: 'date', component: DatePickerComponent },
     ]),
     NgbModule,

@@ -8,8 +8,8 @@
 }
 
 .allStocks-container {
-  background-image: url('../../assets/stock_wallpaper.jpg');
+  background-image: url("../../assets/stock_wallpaper.jpg");
   background-size: cover;
   padding: 20px;
-  height: 100vh;
+  height: 100%;
 }
