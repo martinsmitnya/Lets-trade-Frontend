@@ -1,3 +1,25 @@
-<button id="buy">Buy</button>
-<button id="sell">Sell</button>
-{{ symbol }}
+<div>Current Amount: {{ amount }}</div>
+<form [formGroup]="sendForm" (ngSubmit)="onSubmit()">
+  <div>
+    Amount to buy:
+    <input
+      type="number"
+      id="buyAmount"
+      formControlName="amountToBuy"
+      placeholder="Buy"
+    />
+    <button id="buy" (click)="buyStock()">Buy</button>
+  </div>
+  <div *ngIf="amount > 0">
+    Amount to sell:
+    <input
+      type="number"
+      id="sellAmount"
+      formControlName="amountToSell"
+      placeholder="Sell"
+    />
+    <button id="sell" (click)="sellStock()">Sell</button>
+  </div>
+  <br />
+</form>
+
