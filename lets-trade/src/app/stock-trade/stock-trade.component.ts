@@ -2,6 +2,7 @@ import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { TradeApiService } from '../trade-api.service';
 import { FormBuilder } from '@angular/forms';
 
+
 @Component({
   selector: 'app-stock-trade',
   templateUrl: './stock-trade.component.html',
