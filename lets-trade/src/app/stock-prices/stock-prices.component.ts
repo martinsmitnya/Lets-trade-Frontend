@@ -27,6 +27,5 @@ export class StockPricesComponent implements OnInit {
         },
       });
     });
-    console.log(this.stockList);
   }
 }

@@ -3,7 +3,7 @@
   Amount to buy/sell:
   <input
     type="number"
-    id="amount"
+    id="amount {{ symbol }}"
     required
     min="1"
     type="number"
@@ -14,14 +14,19 @@
     <button mat-button (click)="openDatePicker()">Schedule</button>
   </div>
   <div *ngIf="date">
-    <label>Your transaction is will be scheduled on: {{ date }} </label>
-    <button id="CancelSchedule" (click)="cancelSchedule()">
+    <label
+      >Your transaction is scheduled to: {{ date }}. <br />Please, confirm it by
+      clicking the Buy or Sell button.</label
+    >
+    <button id="CancelSchedule {{ symbol }}" (click)="cancelSchedule()">
       Cancel Scheduling
     </button>
   </div>
   <div>
-    <button id="buy" (click)="buyStock()">Buy</button>
-    <button id="sell" (click)="sellStock()" *ngIf="amount > 0">Sell</button>
+    <button id="buy {{ symbol }}" (click)="buyStock()">Buy</button>
+    <button id="sell {{ symbol }}" (click)="sellStock()" *ngIf="amount">
+      Sell
+    </button>
   </div>
   <br />
 </form>
