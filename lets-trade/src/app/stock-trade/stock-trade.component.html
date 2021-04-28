@@ -9,6 +9,9 @@
       placeholder="Buy"
     />
     <button id="buy" (click)="buyStock()">Buy</button>
+    <input [matDatepicker]="basicDatepicker" formControlName="date" />
+    <mat-datepicker-toggle [for]="basicDatepicker"></mat-datepicker-toggle>
+    <mat-datepicker #basicDatepicker></mat-datepicker>
   </div>
   <div *ngIf="amount > 0">
     Amount to sell:
@@ -19,6 +22,9 @@
       placeholder="Sell"
     />
     <button id="sell" (click)="sellStock()">Sell</button>
+    <input [matDatepicker]="basicDatepicker" formControlName="date" />
+    <mat-datepicker-toggle [for]="basicDatepicker"></mat-datepicker-toggle>
+    <mat-datepicker #basicDatepicker></mat-datepicker>
   </div>
   <br />
 </form>

@@ -11,7 +11,11 @@ export class StockTradeComponent implements OnInit {
   @Input() symbol: string = '';
   @Input() amount: number = 3;
 
-  sendForm = this.formBuilder.group({ amountToSell: 0, amountToBuy: 0 });
+  sendForm = this.formBuilder.group({
+    amountToSell: 0,
+    amountToBuy: 0,
+    date: new Date(),
+  });
 
   /*amountToSell: number = 0;
   amountToBuy: number = 0;*/
@@ -22,7 +26,7 @@ export class StockTradeComponent implements OnInit {
   ) {}
 
   buyStock() {
-    console.log(this.sendForm.value.amountToBuy);
+    console.log(this.sendForm.value);
     this.tradeApi.buyStock(this.symbol, this.sendForm.value.amountToBuy);
   }
 
