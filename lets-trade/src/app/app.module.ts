@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +31,8 @@ import { ChartComponent } from './chart/chart.component';
   ],
   imports: [
     FormsModule,
+    NgxChartsModule,
+    BrowserAnimationsModule,
     MatRadioModule,
     ReactiveFormsModule,
     BrowserModule,
