@@ -15,7 +15,6 @@ export class StockPricesComponent implements OnInit {
   constructor(private stockApi: StockApiService) {}
 
   ngOnInit(): void {
-    let stocks: number[] = [];
     this.stockApi.getAllStock().forEach((element: any) => {
       element.subscribe({
         next: (data: any) => {
