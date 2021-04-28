@@ -21,7 +21,11 @@
         formControlName="password"
     /></label>
     <br />
-    <small id="passwordHelpBlock" class="form-text text-muted">
+    <small
+      id="passwordHelpBlock"
+      class="form-text text-muted"
+      *ngIf="errorMessage"
+    >
       {{ errorMessage }}
     </small>
     <br />

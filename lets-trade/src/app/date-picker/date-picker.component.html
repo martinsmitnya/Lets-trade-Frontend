@@ -1,0 +1,10 @@
+<input
+  [matDatepicker]="basicDatepicker"
+  [min]="minDate"
+  [max]="maxDate"
+  [(ngModel)]="selectedDate"
+/>
+<mat-datepicker-toggle [for]="basicDatepicker"></mat-datepicker-toggle>
+<mat-datepicker #basicDatepicker></mat-datepicker>
+<button mat-button mat-dialog-close (click)="onSubmit()">Schedule</button>
+<button mat-button mat-dialog-close>Cancel</button>

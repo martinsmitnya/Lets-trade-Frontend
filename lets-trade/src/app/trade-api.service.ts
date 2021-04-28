@@ -28,4 +28,15 @@ export class TradeApiService {
     };
     return this.http.post<any>(`${this.url}/login`, body, { headers })
   }
+
+  tradeStock(endpoint: string, symbol: string, amount: number, date?: any) {
+    let body = JSON.stringify({
+      symbol: symbol,
+      amount: amount,
+      date: Date.parse(date) || undefined,
+    });
+    console.log(body);
+    let headers = { 'Content-Type': 'application/json' };
+    return this.http.post<any>(`${this.url}/${endpoint}`, body, { headers });
+  }
 }
