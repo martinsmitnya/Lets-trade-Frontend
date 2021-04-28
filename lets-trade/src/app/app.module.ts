@@ -20,6 +20,7 @@ import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.componen
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { StockPricesComponent } from './stock-prices/stock-prices.component';
 import { StockTradeComponent } from './stock-trade/stock-trade.component';
+import { CurrentStocksComponent } from './current-stocks/current-stocks.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 
 @NgModule({
@@ -31,6 +32,7 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
     RegisterFormComponent,
     StockPricesComponent,
     StockTradeComponent,
+    CurrentStocksComponent,
     DatePickerComponent,
   ],
   imports: [
@@ -45,6 +47,7 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
       { path: 'cors', component: CorsComponent },
       { path: '', component: WelcomeScreenComponent },
       { path: 'stock', component: StockPricesComponent },
+      { path: 'allStocks', component: CurrentStocksComponent }
       { path: 'date', component: DatePickerComponent },
     ]),
     NgbModule,
