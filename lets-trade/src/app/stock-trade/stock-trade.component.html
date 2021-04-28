@@ -1,1 +1,32 @@
-<button id="buy">Buy</button> <button id="sell">Sell</button>
+<div>Current Amount: {{ amount }}</div>
+<form [formGroup]="sendForm" (ngSubmit)="onSubmit()">
+  Amount to buy/sell:
+  <input
+    type="number"
+    id="amount {{ symbol }}"
+    required
+    min="1"
+    type="number"
+    formControlName="amount"
+    placeholder="Amount to buy/sell"
+  />
+  <div>
+    <button mat-button (click)="openDatePicker()">Schedule</button>
+  </div>
+  <div *ngIf="date">
+    <label
+      >Your transaction is scheduled to: {{ date }}. <br />Please, confirm it by
+      clicking the Buy or Sell button.</label
+    >
+    <button id="CancelSchedule {{ symbol }}" (click)="cancelSchedule()">
+      Cancel Scheduling
+    </button>
+  </div>
+  <div>
+    <button id="buy {{ symbol }}" (click)="buyStock()">Buy</button>
+    <button id="sell {{ symbol }}" (click)="sellStock()" *ngIf="amount">
+      Sell
+    </button>
+  </div>
+  <br />
+</form>

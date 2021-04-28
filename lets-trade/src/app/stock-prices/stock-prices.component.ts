@@ -15,7 +15,6 @@ export class StockPricesComponent implements OnInit {
   constructor(private stockApi: StockApiService) {}
 
   ngOnInit(): void {
-    let stocks: number[] = [];
     this.stockApi.getAllStock().forEach((element: any) => {
       element.subscribe({
         next: (data: any) => {
@@ -23,13 +22,10 @@ export class StockPricesComponent implements OnInit {
           this.companyList.push(data.companyName);
           this.symbolList.push(data.symbol);
           this.stockList.push(
-            `${data.companyName} (${
-              data.symbol
-            }): ${data.latestPrice.toCurrency()}`
+            `${data.companyName} (${data.symbol}): ${data.latestPrice}`
           );
         },
       });
     });
-    console.log(this.stockList);
   }
 }
