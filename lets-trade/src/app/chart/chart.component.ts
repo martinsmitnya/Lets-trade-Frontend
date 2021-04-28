@@ -17,23 +17,23 @@ export class ChartComponent implements OnInit {
       "series": [
         {
           "name": "monday",
-          "value": 88000000
+          "value": 295
         },
         {
           "name": "tuesday",
-          "value": 50000020
+          "value": 285
         },
         {
           "name": "wednesday",
-          "value": 68000000
+          "value": 321
         },
         {
           "name": "thursday",
-          "value": 59000000
+          "value": 311
         },
         {
           "name": "friday",
-          "value": 38000000
+          "value": 403
         }
       ]
     },
@@ -43,23 +43,23 @@ export class ChartComponent implements OnInit {
       "series": [
         {
           "name": "monday",
-          "value": 34000000
+          "value": 251
         },
         {
           "name": "tuesday",
-          "value": 50000020
+          "value": 297
         },
         {
           "name": "wednesday",
-          "value": 58000000
+          "value": 325
         },
         {
           "name": "thursday",
-          "value": 99000000
+          "value": 272
         },
         {
           "name": "friday",
-          "value": 58000000
+          "value": 307
         }
       ]
     },
@@ -69,51 +69,77 @@ export class ChartComponent implements OnInit {
       "series": [
         {
           "name": "monday",
-          "value": 58000000
+          "value": 260
         },
         {
           "name": "tuesday",
-          "value": 50000020
+          "value": 216
         },
         {
           "name": "wednesday",
-          "value": 58000000
+          "value": 261
         },
         {
           "name": "thursday",
-          "value": 59000000
+          "value": 300
         },
         {
           "name": "friday",
-          "value": 58000000
+          "value": 254
         }
       ]
     },
     {
-      "name": "TSLA",
+      "name": "TWTR",
       "series": [
         {
           "name": "monday",
-          "value": 48000000
+          "value": 111
         },
         {
           "name": "tuesday",
-          "value": 60000020
+          "value": 90
         },
         {
           "name": "wednesday",
-          "value": 58000000
+          "value": 120
         },
         {
           "name": "thursday",
-          "value": 39000000
+          "value": 80
         },
         {
           "name": "friday",
-          "value": 58000000
+          "value": 95
         }
       ]
-    }
+    },
+    
+    {
+      "name": "TOTAL ASSETS",
+      "series": [
+        {
+          "name": "monday",
+          "value": 1000
+        },
+        {
+          "name": "tuesday",
+          "value": 1005
+        },
+        {
+          "name": "wednesday",
+          "value": 1010
+        },
+        {
+          "name": "thursday",
+          "value": 995
+        },
+        {
+          "name": "friday",
+          "value": 1111
+        }
+      ]
+    },
   ];
   view: [number, number]= [700, 300];
 
