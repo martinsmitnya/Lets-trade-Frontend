@@ -1,6 +1,8 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { HttpClient } from '@angular/common/http';
+// import { tradeApi } from '../trade-api.service'
 
 @Component({
   selector: 'app-chart',
@@ -8,70 +10,107 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
   styleUrls: ['./chart.component.css']
 })
 export class ChartComponent implements OnInit {
+  url: string = 'http://localhost:8080';
   multi: any[] = [
     {
-      "name": "Germany",
+      "name": "GOOGL",
       "series": [
         {
-          "name": "1990",
-          "value": 62000000
+          "name": "monday",
+          "value": 88000000
         },
         {
-          "name": "2010",
-          "value": 73000000
-        },
-        {
-          "name": "2011",
-          "value": 89400000
-        }
-      ]
-    },
-  
-    {
-      "name": "USA",
-      "series": [
-        {
-          "name": "1990",
-          "value": 250000000
-        },
-        {
-          "name": "2010",
-          "value": 309000000
-        },
-        {
-          "name": "2011",
-          "value": 311000000
-        }
-      ]
-    },
-  
-    {
-      "name": "France",
-      "series": [
-        {
-          "name": "1990",
-          "value": 58000000
-        },
-        {
-          "name": "2010",
+          "name": "tuesday",
           "value": 50000020
         },
         {
-          "name": "2011",
+          "name": "wednesday",
+          "value": 68000000
+        },
+        {
+          "name": "thursday",
+          "value": 59000000
+        },
+        {
+          "name": "friday",
+          "value": 38000000
+        }
+      ]
+    },
+  
+    {
+      "name": "FB",
+      "series": [
+        {
+          "name": "monday",
+          "value": 34000000
+        },
+        {
+          "name": "tuesday",
+          "value": 50000020
+        },
+        {
+          "name": "wednesday",
+          "value": 58000000
+        },
+        {
+          "name": "thursday",
+          "value": 99000000
+        },
+        {
+          "name": "friday",
+          "value": 58000000
+        }
+      ]
+    },
+  
+    {
+      "name": "MSFT",
+      "series": [
+        {
+          "name": "monday",
+          "value": 58000000
+        },
+        {
+          "name": "tuesday",
+          "value": 50000020
+        },
+        {
+          "name": "wednesday",
+          "value": 58000000
+        },
+        {
+          "name": "thursday",
+          "value": 59000000
+        },
+        {
+          "name": "friday",
           "value": 58000000
         }
       ]
     },
     {
-      "name": "UK",
+      "name": "TSLA",
       "series": [
         {
-          "name": "1990",
-          "value": 57000000
+          "name": "monday",
+          "value": 48000000
         },
         {
-          "name": "2010",
-          "value": 62000000
+          "name": "tuesday",
+          "value": 60000020
+        },
+        {
+          "name": "wednesday",
+          "value": 58000000
+        },
+        {
+          "name": "thursday",
+          "value": 39000000
+        },
+        {
+          "name": "friday",
+          "value": 58000000
         }
       ]
     }
@@ -82,21 +121,57 @@ export class ChartComponent implements OnInit {
   legend: boolean = true;
   showLabels: boolean = true;
   animations: boolean = true;
-  xAxis: boolean = true;
+  xAxis: boolean = false;
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Year';
-  yAxisLabel: string = 'Population';
+  xAxisLabel: string = 'Day';
+  yAxisLabel: string = 'Portfolio Value';
   timeline: boolean = true;
 
   colorScheme = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
   };
 
-  constructor() {  }
+  constructor(private http: HttpClient) {  }
+
+  getUserData() {
+    const headers = { 'content-Type': 'application/json', 'token': 'asdasd' };
+    return this.http.get<any>(`${this.url}/stock`, { headers })
+    .subscribe({
+      next: (data: any) => this.multi = [
+        {
+          "name": data.symbol,
+          "series": [
+            {
+              "name": "monday",
+              "value": 88000000
+            },
+            {
+              "name": "tuesday",
+              "value": 50000020
+            },
+            {
+              "name": "wednesday",
+              "value": 68000000
+            },
+            {
+              "name": "thursday",
+              "value": 59000000
+            },
+            {
+              "name": "friday",
+              "value": 38000000
+            }
+          ]
+        },
+      ],
+      error: (error: any) => this.multi = [error.message],
+    });
+  }
 
   ngOnInit(): void {
+    
   }
 
   onSelect(data:any): void {
