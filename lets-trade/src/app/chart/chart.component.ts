@@ -1,7 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { TradeApiService } from '../trade-api.service';
 import { Router } from '@angular/router';
-// import { tradeApi } from '../trade-api.service'
 
 @Component({
   selector: 'app-chart',
@@ -159,20 +158,6 @@ export class ChartComponent implements OnInit {
 
   constructor(private tradeApi: TradeApiService, private router: Router) {}
 
-  getUserData() {}
-
-  onSelect(data: any): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
-  }
-
-  onActivate(data: any): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
-  }
-
-  onDeactivate(data: any): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
-  }
-
   ngOnInit(): void {
     this.tradeApi.getStock().subscribe({
       next: (data) => {
@@ -183,7 +168,6 @@ export class ChartComponent implements OnInit {
           this.multi[4].series[date.getDay() - 1].value = total;
           this.multi.forEach((element: any) => {
             if (element.name === stock.symbol) {
-              date = new Date(stock.timestamp);
               element.series[date.getDay() - 1].value += stock.buyPrice;
             }
             if (date.getDay() - 2 >= 0)

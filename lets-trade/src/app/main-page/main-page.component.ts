@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TradeApiService } from '../trade-api.service';
+import { isLoggedIn } from '../isLoggedIn';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
@@ -9,8 +11,11 @@ import { TradeApiService } from '../trade-api.service';
 export class MainPageComponent implements OnInit {
   chartData: any[] = [];
   chartIsOk: boolean = false;
-  constructor(private tradeApi: TradeApiService) {}
+  constructor(private tradeApi: TradeApiService, private router: Router) {}
   ngOnInit() {
+    if (!isLoggedIn()) {
+      this.router.navigate(['']);
+    }
     this.chartData.push({
       name: 'TOTAL ASSETS',
       series: [
@@ -46,6 +51,5 @@ export class MainPageComponent implements OnInit {
         this.chartIsOk = true;
       },
     });
-    console.log(this.chartData);
   }
 }
