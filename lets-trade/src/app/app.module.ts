@@ -30,6 +30,7 @@ import { CurrentStocksComponent } from './current-stocks/current-stocks.componen
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { AccountBalanceComponent } from './account-balance/account-balance.component';
 import { AppAlertComponent } from './app-alert/app-alert.component';
+import { MainPageComponent } from './main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { AppAlertComponent } from './app-alert/app-alert.component';
     DatePickerComponent,
     AccountBalanceComponent,
     AppAlertComponent,
+    MainPageComponent,
   ],
 
   imports: [
@@ -61,11 +63,11 @@ import { AppAlertComponent } from './app-alert/app-alert.component';
       { path: 'cors', component: CorsComponent },
       { path: '', component: WelcomeScreenComponent },
       { path: 'stock', component: StockPricesComponent },
-
       { path: 'chart', component: ChartComponent },
-
       { path: 'allStocks', component: CurrentStocksComponent },
       { path: 'date', component: DatePickerComponent },
+      { path: 'main', component: MainPageComponent },
+      { path: '**', component: WelcomeScreenComponent },
     ]),
     NgbModule,
     MatDatepickerModule,
