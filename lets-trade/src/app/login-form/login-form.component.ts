@@ -30,7 +30,7 @@ export class LoginFormComponent implements OnInit {
         )
         .subscribe({
           next: (data) => localStorage.setItem('token', data.token),
-          error: (error) => (this.errorMessage = error.message),
+          error: (error) => (this.errorMessage = error.error.message),
         });
     }
   }
