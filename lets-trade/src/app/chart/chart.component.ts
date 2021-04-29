@@ -1,7 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { TradeApiService } from '../trade-api.service';
 import { Router } from '@angular/router';
-// import { tradeApi } from '../trade-api.service'
 
 @Component({
   selector: 'app-chart',

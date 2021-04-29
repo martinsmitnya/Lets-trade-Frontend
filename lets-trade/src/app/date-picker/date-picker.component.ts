@@ -1,5 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { TradeApiService } from '../trade-api.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
