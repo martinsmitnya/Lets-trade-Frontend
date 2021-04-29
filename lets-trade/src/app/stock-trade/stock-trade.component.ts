@@ -11,7 +11,8 @@ import { DatePickerComponent } from '../date-picker/date-picker.component';
 })
 export class StockTradeComponent implements OnInit {
   @Input() symbol: string = '';
-  @Input() amount: number = 0;
+  amount: number = 0;
+  value: number = 0;
 
   sendForm = this.formBuilder.group({
     amount: 1,
@@ -60,6 +61,7 @@ export class StockTradeComponent implements OnInit {
         data.stockList.forEach((stock: any) => {
           if (stock.symbol === this.symbol) {
             this.amount += stock.amount;
+            this.value += stock.latestPrice;
           }
         });
       },
