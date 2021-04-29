@@ -9,47 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./main-page.component.css'],
 })
 export class MainPageComponent implements OnInit {
-  chartData: any[] = [];
-  chartIsOk: boolean = false;
   constructor(private tradeApi: TradeApiService, private router: Router) {}
   ngOnInit() {
     if (!isLoggedIn()) {
       this.router.navigate(['']);
     }
-    this.chartData.push({
-      name: 'TOTAL ASSETS',
-      series: [
-        {
-          name: 'monday',
-          value: 0,
-        },
-        {
-          name: 'tuesday',
-          value: 0,
-        },
-        {
-          name: 'wednesday',
-          value: 0,
-        },
-        {
-          name: 'thursday',
-          value: 0,
-        },
-        {
-          name: 'friday',
-          value: 0,
-        },
-      ],
-    });
-    this.tradeApi.getStock().subscribe({
-      next: (data) => {
-        data.stockList.forEach((stock: any) => {
-          this.chartData[0].series[4].value += stock.buyPrice;
-        });
-      },
-      complete: () => {
-        this.chartIsOk = true;
-      },
-    });
   }
 }
