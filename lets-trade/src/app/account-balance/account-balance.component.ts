@@ -8,12 +8,19 @@ import { TradeApiService } from '../trade-api.service';
 })
 export class AccountBalanceComponent implements OnInit {
   balance: number = 0;
+  stocksValue: number = 0;
 
   constructor(private tradeApi: TradeApiService) {}
 
   ngOnInit(): void {
     this.tradeApi.getStock().subscribe({
-      next: (data) => (this.balance = data.balance),
+      next: (data) => {
+        this.balance = data.balance;
+        for (let i = 0; i < data.stockList.length; i++) {
+          this.stocksValue +=
+            data.stockList[i].amount * data.stockList[i].latestPrice;
+        }
+      },
     });
   }
 }
