@@ -1,2 +1,11 @@
-<p>Balance: {{ balance | currency }}</p>
-<p>Account Value: {{ stocksValue | currency }}</p>
+<div class="card border-dark mb-3" style="max-width: 18rem;">
+  <div class="card-header">Your Portfolio:</div>
+  <div class="card-body text-dark">
+    <h5 class="card-title">Current Balance:</h5>
+    <p class="card-text">{{ balance | currency }}</p>
+  </div>
+  <div class="card-body text-dark">
+    <h5 class="card-title">Account Value:</h5>
+    <p class="card-text">{{ stocksValue | currency }}</p>
+  </div>
+</div>

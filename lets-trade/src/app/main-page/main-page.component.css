@@ -1,0 +1,27 @@
+.main-page-wrapper {
+  display: flex;
+}
+
+.personal-portfolio-wrapper {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.current-stocks-wrapper {
+  width: 30%;
+}
+
+.chart-wrapper {
+  width: 100%;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-top: 40px;
+}
+
+.stock-prices-wrapper {
+  background-image: url('../../assets/marc-schorr-1OHUM7Gnito-unsplash.jpg');
+  background-size: cover;
+}
