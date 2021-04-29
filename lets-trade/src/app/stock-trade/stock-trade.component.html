@@ -1,34 +1,55 @@
 <div>Current Amount: {{ amount }}</div>
 <div>Current Value: {{ value | currency }}</div>
-<form [formGroup]="sendForm" (ngSubmit)="onSubmit()">
-
-
-
+<form [formGroup]="sendForm">
   <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Amount to buy/sell:</label>
-    <input class="form-control" type="number" id="amount {{ symbol }}" required min="1" type="number" formControlName="amount"
-      placeholder="Amount to buy/sell" />
+    <label class="input-group-text" for="inputGroupSelect01"
+      >Amount to buy/sell:</label
+    >
+    <input
+      class="form-control"
+      type="number"
+      id="amount {{ symbol }}"
+      required
+      min="1"
+      type="number"
+      formControlName="amount"
+      placeholder="Amount to buy/sell"
+    />
   </div>
 
-
-
-
   <div *ngIf="!date" class="btn-group btn-group-toggle schedule">
-    <button mat-button (click)="openDatePicker()" class="btn btn-dark">Schedule</button>
+    <button mat-button (click)="openDatePicker()" class="btn btn-dark">
+      Schedule
+    </button>
   </div>
 
   <div *ngIf="date">
-    <button id="CancelSchedule {{ symbol }}" (click)="cancelSchedule()" class="btn btn-dark">
+    <button
+      id="CancelSchedule {{ symbol }}"
+      (click)="cancelSchedule()"
+      class="btn btn-dark"
+    >
       Cancel Scheduling
     </button>
     <br />
-    <label>Your transaction is scheduled to: {{ date }}. <br />Please, confirm it by
-      clicking the Buy or Sell button.</label>
+    <label
+      >Your transaction is scheduled to: {{ date }}. <br />Please, confirm it by
+      clicking the Buy or Sell button.</label
+    >
   </div>
 
   <div class="btn-group btn-group-toggle">
-    <button id="buy {{ symbol }}" (click)="buyStock()" class="btn btn-success">Buy</button>
-    <button id="sell {{ symbol }}" (click)="sellStock()" *ngIf="amount" class="btn btn-danger">Sell</button>
+    <button id="buy {{ symbol }}" (click)="buyStock()" class="btn btn-success">
+      Buy
+    </button>
+    <button
+      id="sell {{ symbol }}"
+      (click)="sellStock()"
+      *ngIf="amount"
+      class="btn btn-danger"
+    >
+      Sell
+    </button>
   </div>
 
   <br />
