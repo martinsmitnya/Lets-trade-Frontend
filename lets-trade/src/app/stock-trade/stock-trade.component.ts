@@ -31,11 +31,16 @@ export class StockTradeComponent implements OnInit {
     this.tradeApi
       .tradeStock('buy', this.symbol, this.sendForm.value.amount, this.date)
       .subscribe({
-        next: (data) => console.log(data),
+        next: (data) =>
+          this.dialog.open(AppAlertComponent, {
+            data: {
+              message: 'Successful Transition',
+            },
+          }),
         error: (err) =>
           this.dialog.open(AppAlertComponent, {
             data: {
-              message: err.message,
+              message: err.error.message,
             },
           }),
       });
@@ -45,11 +50,16 @@ export class StockTradeComponent implements OnInit {
     this.tradeApi
       .tradeStock('sell', this.symbol, this.sendForm.value.amount, this.date)
       .subscribe({
-        next: (data) => console.log(data),
+        next: (data) =>
+          this.dialog.open(AppAlertComponent, {
+            data: {
+              message: 'Successful Transition',
+            },
+          }),
         error: (err) =>
           this.dialog.open(AppAlertComponent, {
             data: {
-              message: err.message,
+              message: err.error.message,
             },
           }),
       });
