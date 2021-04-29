@@ -176,14 +176,20 @@ export class ChartComponent implements OnInit {
   ngOnInit(): void {
     this.tradeApi.getStock().subscribe({
       next: (data) => {
+        let total = 0;
         data.stockList.forEach((stock: any) => {
           let date = new Date(stock.timestamp);
-          this.multi[4].series[date.getDay()].value += stock.buyPrice;
+          total += stock.buyPrice;
+          this.multi[4].series[date.getDay() - 1].value = total;
           this.multi.forEach((element: any) => {
             if (element.name === stock.symbol) {
               date = new Date(stock.timestamp);
-              element.series[date.getDay()].value += stock.buyPrice;
+              element.series[date.getDay() - 1].value += stock.buyPrice;
+              console.log(element.series[date.getDay() - 1].value);
             }
+            if (date.getDay() - 2 >= 0)
+              element.series[date.getDay() - 1].value +=
+                element.series[date.getDay() - 2].value;
           });
         });
       },
