@@ -1,6 +1,6 @@
 # Let-s-trade-Frontend
 
-Technologies: Angular 8, Bootstrap, JavaScript.
+Technologies: Angular 8, Bootstrap, TypeScript.
 
 Idea for this project was suggested by Greenfox Academy and BlackRock inc.
 
