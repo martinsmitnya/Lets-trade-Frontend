@@ -5,10 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -20,8 +23,13 @@ import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.componen
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { StockPricesComponent } from './stock-prices/stock-prices.component';
 import { StockTradeComponent } from './stock-trade/stock-trade.component';
+
+import { ChartComponent } from './chart/chart.component';
+
 import { CurrentStocksComponent } from './current-stocks/current-stocks.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
+import { AccountBalanceComponent } from './account-balance/account-balance.component';
+import { AppAlertComponent } from './app-alert/app-alert.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +40,17 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
     RegisterFormComponent,
     StockPricesComponent,
     StockTradeComponent,
+    ChartComponent,
     CurrentStocksComponent,
     DatePickerComponent,
+    AccountBalanceComponent,
+    AppAlertComponent,
   ],
+
   imports: [
     FormsModule,
+    NgxChartsModule,
+    BrowserAnimationsModule,
     MatRadioModule,
     ReactiveFormsModule,
     BrowserModule,
@@ -47,6 +61,9 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
       { path: 'cors', component: CorsComponent },
       { path: '', component: WelcomeScreenComponent },
       { path: 'stock', component: StockPricesComponent },
+
+      { path: 'chart', component: ChartComponent },
+
       { path: 'allStocks', component: CurrentStocksComponent },
       { path: 'date', component: DatePickerComponent },
     ]),

@@ -1,3 +1,4 @@
+
 <div class="allStocks-container">
   <div *ngFor="let price of prices; let i = index" class="card text-center">
     <div class="card-header">
@@ -15,4 +16,9 @@
       </div>
     </div>
   </div>
+</div>
+<app-account-balance></app-account-balance>
+<div *ngFor="let price of prices; let i = index">
+  {{ companyList[i] }} ({{ symbolList[i] }}): {{ price | currency }}
+  <app-stock-trade [symbol]="symbolList[i]"></app-stock-trade>
 </div>
