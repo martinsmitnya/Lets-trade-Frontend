@@ -1,3 +1,4 @@
+import { AppAlertComponent } from './../app-alert/app-alert.component';
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { TradeApiService } from '../trade-api.service';
 import { FormBuilder } from '@angular/forms';
@@ -12,6 +13,7 @@ import { DatePickerComponent } from '../date-picker/date-picker.component';
 export class StockTradeComponent implements OnInit {
   @Input() symbol: string = '';
   amount: number = 0;
+  value: number = 0;
 
   sendForm = this.formBuilder.group({
     amount: 1,
@@ -30,7 +32,12 @@ export class StockTradeComponent implements OnInit {
       .tradeStock('buy', this.symbol, this.sendForm.value.amount, this.date)
       .subscribe({
         next: (data) => console.log(data),
-        error: (err) => console.error(err.error),
+        error: (err) =>
+          this.dialog.open(AppAlertComponent, {
+            data: {
+              message: err.message,
+            },
+          }),
       });
   }
 
@@ -39,7 +46,12 @@ export class StockTradeComponent implements OnInit {
       .tradeStock('sell', this.symbol, this.sendForm.value.amount, this.date)
       .subscribe({
         next: (data) => console.log(data),
-        error: (err) => console.error(err.error),
+        error: (err) =>
+          this.dialog.open(AppAlertComponent, {
+            data: {
+              message: err.message,
+            },
+          }),
       });
   }
   cancelSchedule() {
@@ -60,6 +72,7 @@ export class StockTradeComponent implements OnInit {
         data.stockList.forEach((stock: any) => {
           if (stock.symbol === this.symbol) {
             this.amount += stock.amount;
+            this.value += stock.latestPrice;
           }
         });
       },
