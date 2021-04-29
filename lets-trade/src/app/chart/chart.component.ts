@@ -169,7 +169,6 @@ export class ChartComponent implements OnInit {
           this.multi[4].series[date.getDay() - 1].value = total;
           this.multi.forEach((element: any) => {
             if (element.name === stock.symbol) {
-              date = new Date(stock.timestamp);
               element.series[date.getDay() - 1].value += stock.buyPrice;
             }
             if (date.getDay() - 2 >= 0)

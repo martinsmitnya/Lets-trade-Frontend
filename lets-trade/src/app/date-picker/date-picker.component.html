@@ -6,5 +6,12 @@
 />
 <mat-datepicker-toggle [for]="basicDatepicker"></mat-datepicker-toggle>
 <mat-datepicker #basicDatepicker></mat-datepicker>
-<button mat-button mat-dialog-close (click)="onSubmit()">Schedule</button>
-<button mat-button mat-dialog-close>Cancel</button>
+<button
+  mat-button
+  mat-dialog-close
+  (click)="onSubmit()"
+  class="btn btn-success"
+>
+  Schedule
+</button>
+<button mat-button mat-dialog-close class="btn btn-danger">Cancel</button>
