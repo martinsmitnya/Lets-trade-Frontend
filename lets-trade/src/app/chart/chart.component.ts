@@ -185,7 +185,6 @@ export class ChartComponent implements OnInit {
             if (element.name === stock.symbol) {
               date = new Date(stock.timestamp);
               element.series[date.getDay() - 1].value += stock.buyPrice;
-              console.log(element.series[date.getDay() - 1].value);
             }
             if (date.getDay() - 2 >= 0)
               element.series[date.getDay() - 1].value +=
