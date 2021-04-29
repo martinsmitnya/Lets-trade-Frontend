@@ -1,3 +1,4 @@
+import { AppAlertComponent } from './../app-alert/app-alert.component';
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { TradeApiService } from '../trade-api.service';
 import { FormBuilder } from '@angular/forms';
@@ -31,7 +32,12 @@ export class StockTradeComponent implements OnInit {
       .tradeStock('buy', this.symbol, this.sendForm.value.amount, this.date)
       .subscribe({
         next: (data) => console.log(data),
-        error: (err) => console.error(err.error),
+        error: (err) =>
+          this.dialog.open(AppAlertComponent, {
+            data: {
+              message: err.message,
+            },
+          }),
       });
   }
 
@@ -40,7 +46,12 @@ export class StockTradeComponent implements OnInit {
       .tradeStock('sell', this.symbol, this.sendForm.value.amount, this.date)
       .subscribe({
         next: (data) => console.log(data),
-        error: (err) => console.error(err.error),
+        error: (err) =>
+          this.dialog.open(AppAlertComponent, {
+            data: {
+              message: err.message,
+            },
+          }),
       });
   }
   cancelSchedule() {

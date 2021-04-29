@@ -23,9 +23,10 @@ import { StockTradeComponent } from './stock-trade/stock-trade.component';
 import { CurrentStocksComponent } from './current-stocks/current-stocks.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { AccountBalanceComponent } from './account-balance/account-balance.component';
+import { AppAlertComponent } from './app-alert/app-alert.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     CorsComponent,
     LoginFormComponent,
@@ -36,7 +37,8 @@ import { AccountBalanceComponent } from './account-balance/account-balance.compo
     CurrentStocksComponent,
     DatePickerComponent,
     AccountBalanceComponent,
-  ],
+      AppAlertComponent
+   ],
   imports: [
     FormsModule,
     MatRadioModule,
