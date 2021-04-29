@@ -11,7 +11,7 @@ import { DatePickerComponent } from '../date-picker/date-picker.component';
 })
 export class StockTradeComponent implements OnInit {
   @Input() symbol: string = '';
-  @Input() amount: number = 3;
+  @Input() amount: number = 0;
 
   sendForm = this.formBuilder.group({
     amount: 1,
@@ -54,5 +54,15 @@ export class StockTradeComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.tradeApi.getStock().subscribe({
+      next: (data) => {
+        data.stockList.forEach((stock: any) => {
+          if (stock.symbol === this.symbol) {
+            this.amount += stock.amount;
+          }
+        });
+      },
+    });
+  }
 }
