@@ -1,6 +1,17 @@
-<div>
-  <div><app-current-stocks></app-current-stocks></div>
-  <div><app-account-balance></app-account-balance></div>
-  <div><app-chart></app-chart></div>
-  <div><app-stock-prices></app-stock-prices></div>
+<app-header></app-header>
+<div class="main-page-wrapper">
+  <div class="personal-portfolio-wrapper">
+    <div>
+    </div>
+    <div class="chart-wrapper">
+      <app-chart></app-chart>
+      <app-account-balance></app-account-balance>
+    </div>
+    <div class="stock-prices-wrapper">
+      <app-stock-prices></app-stock-prices>
+    </div>
+  </div>
+  <div class="current-stocks-wrapper">
+    <app-current-stocks></app-current-stocks>
+  </div>
 </div>
