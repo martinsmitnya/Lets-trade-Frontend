@@ -31,6 +31,7 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
 import { AccountBalanceComponent } from './account-balance/account-balance.component';
 import { AppAlertComponent } from './app-alert/app-alert.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { MainPageComponent } from './main-page/main-page.component';
     AccountBalanceComponent,
     AppAlertComponent,
     MainPageComponent,
+    HeaderComponent,
   ],
 
   imports: [

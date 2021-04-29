@@ -1,0 +1,11 @@
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(240, 240, 240);
+  border-bottom: rgb(31, 31, 31) 20px solid;
+}
+
+.logo {
+  height: 75px;
+  width: auto;
+}
