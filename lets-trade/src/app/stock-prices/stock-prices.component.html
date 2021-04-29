@@ -1,3 +1,22 @@
+
+<div class="allStocks-container">
+  <div *ngFor="let price of prices; let i = index" class="card text-center">
+    <div class="card-header">
+      <div class="allStocks-companyName">
+        {{ companyList[i]}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="card-body">
+        <h5 class="card-title">{{ symbolList[i] }}</h5>
+        <p class="card-text">{{ price | currency }}</p>
+      </div>
+      <div class="card-body">
+        <app-stock-trade [symbol]="symbolList[i]"></app-stock-trade>
+      </div>
+    </div>
+  </div>
+</div>
 <app-account-balance></app-account-balance>
 <div *ngFor="let price of prices; let i = index">
   {{ companyList[i] }} ({{ symbolList[i] }}): {{ price | currency }}
