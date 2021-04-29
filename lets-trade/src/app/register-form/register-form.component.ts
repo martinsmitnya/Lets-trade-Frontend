@@ -23,15 +23,19 @@ export class RegisterFormComponent implements OnInit {
     } else if (this.sendForm.value.password.trim().length < 8) {
       this.errorMessage = 'The password must be at least 8 characters long';
     } else {
-      this.tradeApi.register(
-        this.sendForm.value.name.trim(),
-        this.sendForm.value.password.trim(),
-        this.sendForm.value.email.trim()
-      )
-      .subscribe({
-        next: (data) => this.errorMessage = 'Loading...',
-        error: (error) => this.errorMessage = error.message,
-      });
+      this.tradeApi
+        .register(
+          this.sendForm.value.name.trim(),
+          this.sendForm.value.password.trim(),
+          this.sendForm.value.email.trim()
+        )
+        .subscribe({
+          next: (data) => {
+            (this.errorMessage = "Don't forget to validate your email!"),
+              this.sendForm.reset();
+          },
+          error: (error) => (this.errorMessage = error.error.message),
+        });
     }
   }
 
