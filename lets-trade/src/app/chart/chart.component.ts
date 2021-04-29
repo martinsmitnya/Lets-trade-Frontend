@@ -1,149 +1,147 @@
 import { Component, OnInit, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { HttpClient } from '@angular/common/http';
+import { TradeApiService } from '../trade-api.service';
+import { Router } from '@angular/router';
 // import { tradeApi } from '../trade-api.service'
 
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.css']
+  styleUrls: ['./chart.component.css'],
 })
 export class ChartComponent implements OnInit {
-  url: string = 'http://localhost:8080';
+  chartReady: boolean = false;
   multi: any[] = [
     {
-      "name": "GOOGL",
-      "series": [
+      name: 'GOOG',
+      series: [
         {
-          "name": "monday",
-          "value": 295
+          name: 'monday',
+          value: 0,
         },
         {
-          "name": "tuesday",
-          "value": 285
+          name: 'tuesday',
+          value: 0,
         },
         {
-          "name": "wednesday",
-          "value": 321
+          name: 'wednesday',
+          value: 0,
         },
         {
-          "name": "thursday",
-          "value": 311
+          name: 'thursday',
+          value: 0,
         },
         {
-          "name": "friday",
-          "value": 403
-        }
-      ]
+          name: 'friday',
+          value: 0,
+        },
+      ],
     },
-  
+
     {
-      "name": "FB",
-      "series": [
+      name: 'FB',
+      series: [
         {
-          "name": "monday",
-          "value": 251
+          name: 'monday',
+          value: 0,
         },
         {
-          "name": "tuesday",
-          "value": 297
+          name: 'tuesday',
+          value: 0,
         },
         {
-          "name": "wednesday",
-          "value": 325
+          name: 'wednesday',
+          value: 0,
         },
         {
-          "name": "thursday",
-          "value": 272
+          name: 'thursday',
+          value: 0,
         },
         {
-          "name": "friday",
-          "value": 307
-        }
-      ]
+          name: 'friday',
+          value: 0,
+        },
+      ],
     },
-  
+
     {
-      "name": "MSFT",
-      "series": [
+      name: 'MSFT',
+      series: [
         {
-          "name": "monday",
-          "value": 260
+          name: 'monday',
+          value: 0,
         },
         {
-          "name": "tuesday",
-          "value": 216
+          name: 'tuesday',
+          value: 0,
         },
         {
-          "name": "wednesday",
-          "value": 261
+          name: 'wednesday',
+          value: 0,
         },
         {
-          "name": "thursday",
-          "value": 300
+          name: 'thursday',
+          value: 0,
         },
         {
-          "name": "friday",
-          "value": 254
-        }
-      ]
+          name: 'friday',
+          value: 0,
+        },
+      ],
     },
     {
-      "name": "TWTR",
-      "series": [
+      name: 'TWTR',
+      series: [
         {
-          "name": "monday",
-          "value": 111
+          name: 'monday',
+          value: 0,
         },
         {
-          "name": "tuesday",
-          "value": 90
+          name: 'tuesday',
+          value: 0,
         },
         {
-          "name": "wednesday",
-          "value": 120
+          name: 'wednesday',
+          value: 0,
         },
         {
-          "name": "thursday",
-          "value": 80
+          name: 'thursday',
+          value: 0,
         },
         {
-          "name": "friday",
-          "value": 95
-        }
-      ]
+          name: 'friday',
+          value: 0,
+        },
+      ],
     },
-    
+
     {
-      "name": "TOTAL ASSETS",
-      "series": [
+      name: 'TOTAL ASSETS',
+      series: [
         {
-          "name": "monday",
-          "value": 1000
+          name: 'monday',
+          value: 0,
         },
         {
-          "name": "tuesday",
-          "value": 1005
+          name: 'tuesday',
+          value: 0,
         },
         {
-          "name": "wednesday",
-          "value": 1010
+          name: 'wednesday',
+          value: 0,
         },
         {
-          "name": "thursday",
-          "value": 995
+          name: 'thursday',
+          value: 0,
         },
         {
-          "name": "friday",
-          "value": 1111
-        }
-      ]
+          name: 'friday',
+          value: 0,
+        },
+      ],
     },
   ];
-  view: [number, number]= [700, 300];
+  view: [number, number] = [700, 300];
 
-  // options
   legend: boolean = true;
   showLabels: boolean = true;
   animations: boolean = true;
@@ -156,60 +154,47 @@ export class ChartComponent implements OnInit {
   timeline: boolean = true;
 
   colorScheme = {
-    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
+    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5'],
   };
 
-  constructor(private http: HttpClient) {  }
+  constructor(private tradeApi: TradeApiService, private router: Router) {}
 
-  getUserData() {
-    const headers = { 'content-Type': 'application/json', 'token': 'asdasd' };
-    return this.http.get<any>(`${this.url}/stock`, { headers })
-    .subscribe({
-      next: (data: any) => this.multi = [
-        {
-          "name": data.symbol,
-          "series": [
-            {
-              "name": "monday",
-              "value": 88000000
-            },
-            {
-              "name": "tuesday",
-              "value": 50000020
-            },
-            {
-              "name": "wednesday",
-              "value": 68000000
-            },
-            {
-              "name": "thursday",
-              "value": 59000000
-            },
-            {
-              "name": "friday",
-              "value": 38000000
-            }
-          ]
-        },
-      ],
-      error: (error: any) => this.multi = [error.message],
-    });
-  }
+  getUserData() {}
 
-  ngOnInit(): void {
-    
-  }
-
-  onSelect(data:any): void {
+  onSelect(data: any): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }
 
-  onActivate(data:any): void {
+  onActivate(data: any): void {
     console.log('Activate', JSON.parse(JSON.stringify(data)));
   }
 
-  onDeactivate(data:any): void {
+  onDeactivate(data: any): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 
+  ngOnInit(): void {
+    this.tradeApi.getStock().subscribe({
+      next: (data) => {
+        let total = 0;
+        data.stockList.forEach((stock: any) => {
+          let date = new Date(stock.timestamp);
+          total += stock.buyPrice;
+          this.multi[4].series[date.getDay() - 1].value = total;
+          this.multi.forEach((element: any) => {
+            if (element.name === stock.symbol) {
+              date = new Date(stock.timestamp);
+              element.series[date.getDay() - 1].value += stock.buyPrice;
+            }
+            if (date.getDay() - 2 >= 0)
+              element.series[date.getDay() - 1].value +=
+                element.series[date.getDay() - 2].value;
+          });
+        });
+      },
+      complete: () => {
+        this.chartReady = true;
+      },
+    });
+  }
 }
