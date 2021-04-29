@@ -1,7 +1,9 @@
+import { AppAlertComponent } from './../app-alert/app-alert.component';
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { TradeApiService } from '../trade-api.service';
 import { FormBuilder } from '@angular/forms';
-
+import { MatDialog } from '@angular/material/dialog';
+import { DatePickerComponent } from '../date-picker/date-picker.component';
 
 @Component({
   selector: 'app-stock-trade',
@@ -10,37 +12,80 @@ import { FormBuilder } from '@angular/forms';
 })
 export class StockTradeComponent implements OnInit {
   @Input() symbol: string = '';
-  @Input() amount: number = 3;
+  amount: number = 0;
+  value: number = 0;
 
-  sendForm = this.formBuilder.group({ amountToSell: 0, amountToBuy: 0 });
+  sendForm = this.formBuilder.group({
+    amount: 1,
+  });
 
-  /*amountToSell: number = 0;
-  amountToBuy: number = 0;*/
+  date: any = undefined;
 
   constructor(
     private formBuilder: FormBuilder,
-    private tradeApi: TradeApiService
+    private tradeApi: TradeApiService,
+    public dialog: MatDialog
   ) {}
 
   buyStock() {
-    console.log(this.sendForm.value.amountToBuy);
-    this.tradeApi.buyStock(this.symbol, this.sendForm.value.amountToBuy);
+    this.tradeApi
+      .tradeStock('buy', this.symbol, this.sendForm.value.amount, this.date)
+      .subscribe({
+        next: (data) =>
+          this.dialog.open(AppAlertComponent, {
+            data: {
+              message: 'Successful Transition',
+            },
+          }),
+        error: (err) =>
+          this.dialog.open(AppAlertComponent, {
+            data: {
+              message: err.error.message,
+            },
+          }),
+      });
   }
 
   sellStock() {
-    console.log(this.sendForm.value.amountToSell);
-    this.tradeApi.sellStock(this.symbol, this.sendForm.value.amountToSell);
+    this.tradeApi
+      .tradeStock('sell', this.symbol, this.sendForm.value.amount, this.date)
+      .subscribe({
+        next: (data) =>
+          this.dialog.open(AppAlertComponent, {
+            data: {
+              message: 'Successful Transition',
+            },
+          }),
+        error: (err) =>
+          this.dialog.open(AppAlertComponent, {
+            data: {
+              message: err.error.message,
+            },
+          }),
+      });
   }
-
+  cancelSchedule() {
+    this.date = undefined;
+  }
   onSubmit() {}
 
-  /*onKey(event: any) {
-    if (event.target.id === 'buyAmount') {
-      this.amountToBuy = event.target.value;
-    } else if (event.target.id === 'sellAmount') {
-      this.amountToSell = event.target.value;
-    }
-  }*/
+  openDatePicker() {
+    const dialogRef = this.dialog.open(DatePickerComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      this.date = result.date || undefined;
+    });
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.tradeApi.getStock().subscribe({
+      next: (data) => {
+        data.stockList.forEach((stock: any) => {
+          if (stock.symbol === this.symbol) {
+            this.amount += stock.amount;
+            this.value += stock.latestPrice;
+          }
+        });
+      },
+    });
+  }
 }
