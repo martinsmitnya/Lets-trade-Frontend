@@ -5,10 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -34,9 +31,8 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
 import { AccountBalanceComponent } from './account-balance/account-balance.component';
 import { AppAlertComponent } from './app-alert/app-alert.component';
 
-
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     CorsComponent,
     LoginFormComponent,
@@ -44,15 +40,12 @@ import { AppAlertComponent } from './app-alert/app-alert.component';
     RegisterFormComponent,
     StockPricesComponent,
     StockTradeComponent,
-
     ChartComponent,
-  ],
-
     CurrentStocksComponent,
     DatePickerComponent,
     AccountBalanceComponent,
-      AppAlertComponent
-   ],
+    AppAlertComponent,
+  ],
 
   imports: [
     FormsModule,
@@ -73,7 +66,6 @@ import { AppAlertComponent } from './app-alert/app-alert.component';
 
       { path: 'allStocks', component: CurrentStocksComponent },
       { path: 'date', component: DatePickerComponent },
-
     ]),
     NgbModule,
     MatDatepickerModule,
