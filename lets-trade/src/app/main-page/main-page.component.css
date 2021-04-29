@@ -19,6 +19,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   padding-top: 40px;
+  background-color:  rgb(240, 240, 240);
 }
 
 .stock-prices-wrapper {
