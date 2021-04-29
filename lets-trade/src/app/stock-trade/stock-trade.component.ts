@@ -26,21 +26,21 @@ export class StockTradeComponent implements OnInit {
   ) {}
 
   buyStock() {
-    this.tradeApi.tradeStock(
-      'buy',
-      this.symbol,
-      this.sendForm.value.amount,
-      this.date
-    );
+    this.tradeApi
+      .tradeStock('buy', this.symbol, this.sendForm.value.amount, this.date)
+      .subscribe({
+        next: (data) => console.log(data),
+        error: (err) => console.error(err.error),
+      });
   }
 
   sellStock() {
-    this.tradeApi.tradeStock(
-      'sell',
-      this.symbol,
-      this.sendForm.value.amount,
-      this.date
-    );
+    this.tradeApi
+      .tradeStock('sell', this.symbol, this.sendForm.value.amount, this.date)
+      .subscribe({
+        next: (data) => console.log(data),
+        error: (err) => console.error(err.error),
+      });
   }
   cancelSchedule() {
     this.date = undefined;

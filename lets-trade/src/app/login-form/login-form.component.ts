@@ -22,15 +22,16 @@ export class LoginFormComponent implements OnInit {
     } else if (this.sendForm.value.password.trim() === '') {
       this.errorMessage = 'There is no password';
     } else {
-      this.tradeApi.login(
-        this.sendForm.value.name.trim(),
-        this.sendForm.value.password.trim(),
-        this.sendForm.value.email.trim()
-      )
-      .subscribe({
-        next: (data) => this.errorMessage = 'Loading...',
-        error: (error) => this.errorMessage = error.message,
-      });
+      this.tradeApi
+        .login(
+          this.sendForm.value.name.trim(),
+          this.sendForm.value.password.trim(),
+          this.sendForm.value.email.trim()
+        )
+        .subscribe({
+          next: (data) => localStorage.setItem('token', data.token),
+          error: (error) => (this.errorMessage = error.message),
+        });
     }
   }
 
