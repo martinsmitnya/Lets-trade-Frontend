@@ -22,9 +22,4 @@ export class StockApiService {
   getStock(company: string) {
     return this.http.get<any>(this.url + company + this.stockToken);
   }
-
-  buyStock(symbol: string) {
-    let body = JSON.stringify({ symbol: symbol });
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-  }
 }

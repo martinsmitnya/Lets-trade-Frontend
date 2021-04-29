@@ -13,7 +13,7 @@ export class CorsService {
     const config = { body: body, headers: headers };
     return this.http.get<any>('http://localhost:8080/hello', config).subscribe({
       next: (data) => {
-        console.log(data); //"Hello World"
+        console.log(data);
       },
     });
   }

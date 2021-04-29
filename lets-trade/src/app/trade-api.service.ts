@@ -48,16 +48,24 @@ export class TradeApiService {
     let body = JSON.stringify({
       symbol: symbol,
       amount: amount,
+      action: endpoint,
       date: Date.parse(date) || undefined,
     });
     let headers = {
       'Content-Type': 'application/json',
       token: this.token || '',
     };
+    if (date) {
+      return this.scheduleTransaction(body, headers);
+    }
     if (endpoint === 'sell') {
       return this.http.put<any>(`${this.url}/stock`, body, { headers });
     } else {
       return this.http.post<any>(`${this.url}/stock`, body, { headers });
     }
+  }
+
+  scheduleTransaction(body: any, headers: any) {
+    return this.http.post<any>(`${this.url}/scheduled`, body, { headers });
   }
 }

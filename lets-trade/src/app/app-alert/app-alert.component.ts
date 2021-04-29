@@ -16,7 +16,5 @@ export class AppAlertComponent implements OnInit {
     this.dialogRef.close({});
   }
 
-  ngOnInit() {
-    console.log(this.data);
-  }
+  ngOnInit() {}
 }

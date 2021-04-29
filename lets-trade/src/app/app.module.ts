@@ -62,12 +62,6 @@ import { HeaderComponent } from './header/header.component';
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot([
-      { path: 'cors', component: CorsComponent },
-      { path: '', component: WelcomeScreenComponent },
-      { path: 'stock', component: StockPricesComponent },
-      { path: 'chart', component: ChartComponent },
-      { path: 'allStocks', component: CurrentStocksComponent },
-      { path: 'date', component: DatePickerComponent },
       { path: 'main', component: MainPageComponent },
       { path: '**', component: WelcomeScreenComponent },
     ]),

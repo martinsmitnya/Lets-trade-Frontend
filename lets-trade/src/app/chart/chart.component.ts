@@ -159,20 +159,6 @@ export class ChartComponent implements OnInit {
 
   constructor(private tradeApi: TradeApiService, private router: Router) {}
 
-  getUserData() {}
-
-  onSelect(data: any): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
-  }
-
-  onActivate(data: any): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
-  }
-
-  onDeactivate(data: any): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
-  }
-
   ngOnInit(): void {
     this.tradeApi.getStock().subscribe({
       next: (data) => {
