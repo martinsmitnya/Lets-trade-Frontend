@@ -3,6 +3,7 @@ import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { TradeApiService } from '../trade-api.service';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { DatePickerComponent } from '../date-picker/date-picker.component';
 
 @Component({
@@ -24,19 +25,22 @@ export class StockTradeComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private tradeApi: TradeApiService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {}
 
   buyStock() {
     this.tradeApi
       .tradeStock('buy', this.symbol, this.sendForm.value.amount, this.date)
       .subscribe({
-        next: (data) =>
+        next: (data) => {
           this.dialog.open(AppAlertComponent, {
             data: {
               message: 'Successful Transition',
             },
           }),
+            this.reloadCurrentRoute();
+        },
         error: (err) =>
           this.dialog.open(AppAlertComponent, {
             data: {
@@ -50,12 +54,14 @@ export class StockTradeComponent implements OnInit {
     this.tradeApi
       .tradeStock('sell', this.symbol, this.sendForm.value.amount, this.date)
       .subscribe({
-        next: (data) =>
+        next: (data) => {
           this.dialog.open(AppAlertComponent, {
             data: {
               message: 'Successful Transition',
             },
           }),
+            this.reloadCurrentRoute();
+        },
         error: (err) =>
           this.dialog.open(AppAlertComponent, {
             data: {
@@ -67,7 +73,13 @@ export class StockTradeComponent implements OnInit {
   cancelSchedule() {
     this.date = undefined;
   }
-  onSubmit() {}
+
+  reloadCurrentRoute() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
+  }
 
   openDatePicker() {
     const dialogRef = this.dialog.open(DatePickerComponent);
