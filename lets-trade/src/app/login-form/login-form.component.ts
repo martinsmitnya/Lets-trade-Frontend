@@ -1,6 +1,8 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { TradeApiService } from '../trade-api.service';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { isLoggedIn } from '../isLoggedIn';
 
 @Component({
   selector: 'app-login-form',
@@ -13,7 +15,8 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private tradeApi: TradeApiService
+    private tradeApi: TradeApiService,
+    private router: Router
   ) {}
 
   onSubmit() {
@@ -29,11 +32,21 @@ export class LoginFormComponent implements OnInit {
           this.sendForm.value.email.trim()
         )
         .subscribe({
-          next: (data) => localStorage.setItem('token', data.token),
+          next: (data) => {
+            localStorage.setItem('token', data.token), this.checkLoggedIn();
+          },
           error: (error) => (this.errorMessage = error.error.message),
         });
     }
   }
 
-  ngOnInit(): void {}
+  checkLoggedIn() {
+    if (isLoggedIn()) {
+      this.router.navigate(['/main']);
+    }
+  }
+
+  ngOnInit(): void {
+    this.checkLoggedIn();
+  }
 }

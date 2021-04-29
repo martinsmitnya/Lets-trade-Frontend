@@ -61,11 +61,11 @@ import { AppAlertComponent } from './app-alert/app-alert.component';
       { path: 'cors', component: CorsComponent },
       { path: '', component: WelcomeScreenComponent },
       { path: 'stock', component: StockPricesComponent },
-
       { path: 'chart', component: ChartComponent },
-
       { path: 'allStocks', component: CurrentStocksComponent },
       { path: 'date', component: DatePickerComponent },
+      { path: 'main', component: StockPricesComponent },
+      { path: '**', component: WelcomeScreenComponent },
     ]),
     NgbModule,
     MatDatepickerModule,
