@@ -17,10 +17,7 @@ export class DatePickerComponent implements OnInit {
   maxDate: Date = new Date(this.currentYear + 1, 11, 31);
   selectedDate: Date = new Date();
 
-  constructor(
-    private tradeApiService: TradeApiService,
-    private dialogRef: MatDialogRef<DatePickerComponent>
-  ) {}
+  constructor(private dialogRef: MatDialogRef<DatePickerComponent>) {}
 
   onSubmit() {
     this.dialogRef.close({ date: this.selectedDate });

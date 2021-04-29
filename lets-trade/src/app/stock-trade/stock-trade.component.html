@@ -1,4 +1,5 @@
 <div>Current Amount: {{ amount }}</div>
+<div>Current Value: {{ value | currency }}</div>
 <form [formGroup]="sendForm" (ngSubmit)="onSubmit()">
   Amount to buy/sell:
   <input

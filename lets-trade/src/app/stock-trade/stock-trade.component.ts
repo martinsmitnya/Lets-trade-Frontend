@@ -1,3 +1,4 @@
+import { AppAlertComponent } from './../app-alert/app-alert.component';
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { TradeApiService } from '../trade-api.service';
 import { FormBuilder } from '@angular/forms';
@@ -11,7 +12,8 @@ import { DatePickerComponent } from '../date-picker/date-picker.component';
 })
 export class StockTradeComponent implements OnInit {
   @Input() symbol: string = '';
-  @Input() amount: number = 3;
+  amount: number = 0;
+  value: number = 0;
 
   sendForm = this.formBuilder.group({
     amount: 1,
@@ -26,21 +28,41 @@ export class StockTradeComponent implements OnInit {
   ) {}
 
   buyStock() {
-    this.tradeApi.tradeStock(
-      'buy',
-      this.symbol,
-      this.sendForm.value.amount,
-      this.date
-    );
+    this.tradeApi
+      .tradeStock('buy', this.symbol, this.sendForm.value.amount, this.date)
+      .subscribe({
+        next: (data) =>
+          this.dialog.open(AppAlertComponent, {
+            data: {
+              message: 'Successful Transition',
+            },
+          }),
+        error: (err) =>
+          this.dialog.open(AppAlertComponent, {
+            data: {
+              message: err.error.message,
+            },
+          }),
+      });
   }
 
   sellStock() {
-    this.tradeApi.tradeStock(
-      'sell',
-      this.symbol,
-      this.sendForm.value.amount,
-      this.date
-    );
+    this.tradeApi
+      .tradeStock('sell', this.symbol, this.sendForm.value.amount, this.date)
+      .subscribe({
+        next: (data) =>
+          this.dialog.open(AppAlertComponent, {
+            data: {
+              message: 'Successful Transition',
+            },
+          }),
+        error: (err) =>
+          this.dialog.open(AppAlertComponent, {
+            data: {
+              message: err.error.message,
+            },
+          }),
+      });
   }
   cancelSchedule() {
     this.date = undefined;
@@ -54,5 +76,16 @@ export class StockTradeComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.tradeApi.getStock().subscribe({
+      next: (data) => {
+        data.stockList.forEach((stock: any) => {
+          if (stock.symbol === this.symbol) {
+            this.amount += stock.amount;
+            this.value += stock.latestPrice;
+          }
+        });
+      },
+    });
+  }
 }
