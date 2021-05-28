@@ -22,4 +22,13 @@ describe('WelcomeScreenComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Should return true for login', ()=>{
+    expect(component.isLogin).toBe(true);
+  })
+
+  it('Should have register on false', ()=>{
+    expect(component.isRegister).toBe(false);
+  })
+
 });
